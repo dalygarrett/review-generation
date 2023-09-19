@@ -114,13 +114,15 @@ const EntityPage: Template<TemplateRenderProps> = ({
     // Add more tile data as needed
   ];
 
+  const filteredTileData = tileData.filter(tile => tile.href);
+
   return (
     <>
       <HeroBanner
       name={name}
       logo={logo.image.url}
       description={description} ></HeroBanner>
-      <TilesRow tileData={tileData} />
+      {filteredTileData.length > 0 && <TilesRow tileData={filteredTileData} />}
     </>
   );
 };
