@@ -29,7 +29,7 @@ export const config: TemplateConfig = {
     $id: "my-stream-id",
     // Specifies the exact data that each generated document will contain. This data is passed in
     // directly as props to the default exported function.
-    fields: ["id", "name", "slug", "logo", "description", "c_yPURL", "c_findLawURL", "c_facebookURL", "c_gBPURL"],
+    fields: ["id", "c_abogadoURL", "name", "c_tripadvisorURL", "slug", "c_openTableURL", "logo", "reviewGenerationUrl", "description", "c_yPURL", "c_findLawURL", "c_facebookURL", "c_gBPURL"],
     // Defines the scope of entities that qualify for this stream.
     filter: {
       entityTypes: ["location"],
@@ -87,7 +87,7 @@ const EntityPage: Template<TemplateRenderProps> = ({
   path,
   document,
 }) => {
-  const { name, logo, description, c_yPURL, c_findLawURL, c_facebookURL, c_gBPURL } = document;
+  const { name, logo, c_abogadoURL, c_tripadvisorURL, description, c_openTableURL, reviewGenerationUrl, c_yPURL, c_findLawURL, c_facebookURL, c_gBPURL } = document;
 
   const tileData = [
     // Google
@@ -110,6 +110,46 @@ const EntityPage: Template<TemplateRenderProps> = ({
       href: c_yPURL,
       imageSrc: 'https://en.wikirug.org/images/b/bc/Logo_Yellow_Pages.png',
     },
+        // Google
+    {
+      href: c_gBPURL,
+      imageSrc: 'https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png',
+    },
+    // Facebook
+    {
+      href: c_facebookURL,
+      imageSrc: 'https://www.edigitalagency.com.au/wp-content/uploads/Facebook-logo-blue-circle-large-transparent-png.png',
+    },
+    // Findlaw
+    {
+      href: c_findLawURL,
+      imageSrc: 'https://yt3.googleusercontent.com/MB2297Dhvn3-W9NFm-Hdwmu-DEOZfxLBPhSxWOW01ZJSmmz77oGRAL0MzCbbwbe2GtALnQf2Og=s900-c-k-c0x00ffffff-no-rj',
+    },
+    // YP
+    {
+      href: c_yPURL,
+      imageSrc: 'https://en.wikirug.org/images/b/bc/Logo_Yellow_Pages.png',
+    },
+      // First Party
+      {
+        href: reviewGenerationUrl,
+        imageSrc: 'https://www.yext-static.com/cms/spark/1/site-icon-283.svg',
+      },
+      // Opentable
+      {
+        href: c_openTableURL,
+        imageSrc: 'https://assets.stickpng.com/images/6033dd42f82f810004782caf.png',
+      },
+      // Tripadvisor
+      {
+        href: c_tripadvisorURL,
+        imageSrc: 'https://www.edigitalagency.com.au/wp-content/uploads/tripadvisor-logo-circle-owl-icon-black-green-858x858.png',
+      },
+      // Abogado
+      {
+        href: c_abogadoURL,
+        imageSrc: 'https://cdn.abogado.com/image/upload/c_pad,w_500,h_500/q_auto,f_auto,c_lpad,w_600,h_600,b_rgb:fff/v1687594901/resources/abogado/images/v8/abogado-logo2.png',
+      },
     
     // Add more tile data as needed
   ];
