@@ -17,6 +17,9 @@ import {
 } from "@yext/pages";
 import * as React from "react";
 import "../index.css";
+import HeroBanner from "../components/HeroBanner";
+import TilesRow from "../components/TilesRow";
+
 
 /**
  * Required when Knowledge Graph Stream is used for a template.
@@ -26,7 +29,7 @@ export const config: TemplateConfig = {
     $id: "my-stream-id",
     // Specifies the exact data that each generated document will contain. This data is passed in
     // directly as props to the default exported function.
-    fields: ["id", "name", "slug"],
+    fields: ["id", "name", "slug", "logo", "description", "c_yPURL", "c_findLawURL", "c_facebookURL", "c_gBPURL"],
     // Defines the scope of entities that qualify for this stream.
     filter: {
       entityTypes: ["location"],
@@ -75,17 +78,49 @@ export const getHeadConfig: GetHeadConfig<TemplateRenderProps> = ({
  * This is the main template. It can have any name as long as it's the default export.
  * The props passed in here are the direct stream document defined by `config`.
  */
+
+
+
+
 const EntityPage: Template<TemplateRenderProps> = ({
   relativePrefixToRoot,
   path,
   document,
 }) => {
-  const { name } = document;
+  const { name, logo, description, c_yPURL, c_findLawURL, c_facebookURL, c_gBPURL } = document;
+
+  const tileData = [
+    // Google
+    {
+      href: c_gBPURL,
+      imageSrc: 'https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-suite-everything-you-need-know-about-google-newest-0.png',
+    },
+    // Facebook
+    {
+      href: c_facebookURL,
+      imageSrc: 'https://www.edigitalagency.com.au/wp-content/uploads/Facebook-logo-blue-circle-large-transparent-png.png',
+    },
+    // Findlaw
+    {
+      href: c_findLawURL,
+      imageSrc: 'https://yt3.googleusercontent.com/MB2297Dhvn3-W9NFm-Hdwmu-DEOZfxLBPhSxWOW01ZJSmmz77oGRAL0MzCbbwbe2GtALnQf2Og=s900-c-k-c0x00ffffff-no-rj',
+    },
+    // YP
+    {
+      href: c_yPURL,
+      imageSrc: 'https://en.wikirug.org/images/b/bc/Logo_Yellow_Pages.png',
+    },
+    
+    // Add more tile data as needed
+  ];
 
   return (
     <>
-      <h1>Entity Powered Page</h1>
-      <div>Entity Name: {name}</div>
+      <HeroBanner
+      name={name}
+      logo={logo.image.url}
+      description={description} ></HeroBanner>
+      <TilesRow tileData={tileData} />
     </>
   );
 };
