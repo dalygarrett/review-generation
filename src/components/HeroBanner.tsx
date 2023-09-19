@@ -8,7 +8,7 @@ type HeroBannerProps = {
 
 const HeroBanner: React.FC = ({ name, description, logo } : HeroBannerProps) => {
   return (
-    <div className="bg-gradient-to-r from-blue-500 to-purple-500 py-20">
+    <div className="bg-gradient-to-r from-blue-500 to-purple-500 pb-8 pt-10">
       <div className="container mx-auto flex items-center justify-center">
         <div className="text-white text-center">
           <img
